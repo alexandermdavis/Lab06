@@ -2,36 +2,41 @@
 public class BinarySearch {
 
 	public static void binarySearch(int arr[], int first, int last, int key){
+    //Make sure to have, first, last and key in the parameters.
 
+		//This is how the middle is calculated.
 		int mid = (first + last) / 2;
 
-		
-		while( first <= last ) {
+		//This while loop cuts the array in half at the middle and looks for a given element within one of the halves.
+		while(first <= last) {
 			
-
-			if (arr[mid] < key ) {
+            //In the first if statement, it is saying, if the middle of the array is less than the key, then add 1 to the middle to increment its count, set middle to be the new first integer.
+			if (arr[mid] < key) {
 		        
 				first = mid + 1; 
 				
-
-		      } else if ( arr[mid] == key ) {
+            //The else if statement is for when we have found the key, this is when the loop has cut the array in half enough times where we have found the key, and then it breaks out of the loop.
+		    } else if (arr[mid] == key) {
 		        
 				System.out.println("Element is found at index: " + mid);
 				break;
 		 
-		      }else {
+            //This is the reverse of the first if statement, when the middle is a greater value than the key, we set the last integer as the middle and decrement by 1.
+		    } else {
 		    	  
 		    	last = mid - 1;
 		         
-		      }
+		    }
 			
-			mid = (first + last)/2;
+            //Recalculates the middle after its count has gone up or down by 1 and loops back to the if statement until element is found.
+			mid = (first + last) / 2;
 		      
 		}
 		   
-		if ( first > last ) {
+        //The first integer should never be a greater value than the last. So if you go through the entire array and your key is not found, 
+		if (first > last) {
 			
-		      System.out.println("Element is not found!");
+		    System.out.println("Element is not found!");
 		      
 			}
 		
@@ -39,13 +44,14 @@ public class BinarySearch {
 	
 	public static void main(String args[]) {
 		
-		int arr[] = {10,20,30,40,50};
+        //This method has the sorted array, the last integer, and the key we are trying to find.
+		int arr[] = {10, 20, 30, 40, 50};
 		int key = 30;
 		int last = arr.length;
 				        
 		binarySearch(arr, 0, last, key);	
 				
-		 }
+	}
 
 }
 
